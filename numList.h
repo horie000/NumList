@@ -13,10 +13,12 @@ extern NumListNode* createListNode(int* val); //malloc
 extern void delListNode(NumListNode* node); //free
 extern NumListNode* createRootNode(); //rootNodeの作成
 
-extern void add2List(NumListNode* root, NumListNode* tar);
+extern void add2List(NumListNode* nodeList, NumListNode* tar);
 extern NumListNode* delFromList(NumListNode* root, NumListNode* tar);
 
-extern void print(NumListNode* node);
+//util
+extern void printNode(NumListNode* node);
+extern void printAllNodeINList(NumListNode* node);
 
 
 //extern void setNext(NumListNode* node, NumListNode* ); //nodeの次要素を変更
