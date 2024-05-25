@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "numList.h"
 
+struct NumListNode_t{
+    int* val;
+    struct NumListNode_t* next;
+    struct NumListNode_t* root;
+};
+
 int* getVal(NumListNode* node){return node->val;}
 NumListNode* getNext(NumListNode* node){return node->next;}
 NumListNode* getRoot(NumListNode* node){return node->root;}

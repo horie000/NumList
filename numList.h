@@ -1,9 +1,7 @@
-typedef struct NumListNode_t
-{
-    int* val;
-    struct NumListNode_t* next;
-    struct NumListNode_t* root;
-}NumListNode;
+#ifndef NUMLIST_H
+#define NUMLIST_H
+
+typedef struct NumListNode_t NumListNode;
 
 extern int* getVal(NumListNode* node);
 extern NumListNode* getNext(NumListNode* node);
@@ -22,3 +20,4 @@ extern void printAllNodeINList(NumListNode* node);
 
 
 //extern void setNext(NumListNode* node, NumListNode* ); //nodeの次要素を変更
+#endif
