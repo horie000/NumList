@@ -16,6 +16,10 @@ NumListNode* createListNode(int* val){
     return node;
 }
 
+void delListNode(NumListNode* node){
+    free(node);
+}
+
 NumListNode* createRootNode(){
     NumListNode* root = malloc(sizeof(NumListNode));
     if(root != NULL){
@@ -35,13 +39,35 @@ void add2List(NumListNode* nodeList, NumListNode* tar){
     tar->root = nodeList->root;
 }
 
+NumListNode* delFromList(NumListNode* root, NumListNode* tar){
+    NumListNode* prev = root;
+    NumListNode* current = root->next;
+    
+    while(current != NULL){
+        if(*(current->val) == *(tar->val)){
+
+            printf("prev: ");
+            printNode(prev);
+            printf("current: ");
+            printNode(current);
+
+            prev->next = current->next;
+            return current;
+        }
+        current = current->next;
+        prev = prev->next;
+    }
+    printf("can't find target\n");
+    return NULL;
+}
+
 void printNode(NumListNode* node){
     int* temp = node->val;
     if(temp == NULL){
         printf("node don't have value\n");
         return;
     }
-    printf("val: %d, next: %p, root:%p\n", *temp, node->next, node->root);
+    printf("val: %d, current: %p, next: %p, root:%p\n", *(node->val), node, node->next, node->root);
 }
 
 void printAllNodeINList(NumListNode* node){
@@ -82,4 +108,11 @@ int main(){
     add2List(root, node2);
     add2List(root, node3);
     printAllNodeINList(root);
+
+    printf("del node2\n");
+    delFromList(root, node2);
+    printAllNodeINList(root);
+    
+    return 1;
+
 }
