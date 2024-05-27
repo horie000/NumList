@@ -7,8 +7,12 @@ extern int* getVal(NumListNode* node);
 extern NumListNode* getNext(NumListNode* node);
 extern NumListNode* getRoot(NumListNode* node);
 
+extern void setNext(NumListNode* tar, NumListNode* after);
+extern void setNextNULL(NumListNode* tar);
+
 extern NumListNode* createListNode(int* val); //malloc
-extern void delListNode(NumListNode* node); //free
+extern void freeListNode(NumListNode* node); //free
+extern void freeAllNodeINList(NumListNode* root);
 extern NumListNode* createRootNode(); //rootNodeの作成
 
 extern void add2List(NumListNode* nodeList, NumListNode* tar);

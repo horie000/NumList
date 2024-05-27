@@ -12,6 +12,9 @@ int* getVal(NumListNode* node){return node->val;}
 NumListNode* getNext(NumListNode* node){return node->next;}
 NumListNode* getRoot(NumListNode* node){return node->root;}
 
+void setNext(NumListNode* tar, NumListNode* after){tar->next = after;}
+void setNextNULL(NumListNode* tar){tar->next = NULL;}
+
 NumListNode* createListNode(int* val){
     NumListNode* node = malloc(sizeof(NumListNode));
     if(node != NULL){
@@ -22,8 +25,19 @@ NumListNode* createListNode(int* val){
     return node;
 }
 
-void delListNode(NumListNode* node){
+void freeListNode(NumListNode* node){
     free(node);
+    node = NULL;
+}
+
+void freeAllNodeINList(NumListNode* root){
+    NumListNode* current = root->root;
+    NumListNode* temp = root->root;
+    do{
+        current = current->next;
+        freeListNode(temp);
+        temp = current;
+    }while(current->next != NULL);
 }
 
 NumListNode* createRootNode(){
@@ -116,8 +130,14 @@ int main(){
     printAllNodeINList(root);
 
     printf("del node2\n");
-    delFromList(root, node2);
+    //delFromList(root, node2);
+    
     printAllNodeINList(root);
+
+    setNextNULL(node2);
+    printAllNodeINList(root);
+
+    freeAllNodeINList(root);
     
     return 1;
 
